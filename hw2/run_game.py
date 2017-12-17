@@ -100,8 +100,7 @@ class GameRunner:
             board_state.perform_move(move[0],move[1])
             if self.verbose == 'y':
                 print('Player ' + repr(player) + ' performed the move: [' + str(move[0]) + ', ' + str(move[1]) + ']')
-            
-            
+
             if board_state.curr_player == X_PLAYER:
                 k_count = (k_count + 1) % self.k
                 if k_count == 0:

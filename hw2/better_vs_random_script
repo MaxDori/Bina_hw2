@@ -1,0 +1,14 @@
+
+#!/bin/bash
+better_wins=0
+
+for i in {1..100}; do
+	temp=$(python run_game.py 2 10 5 n random_player better_player &)
+	if [[ $temp == *"better"* ]]; then
+		let "better_wins++"
+	fi
+wait
+done 2>/dev/null
+echo better won "$better_wins" times out of 100
+
+

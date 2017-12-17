@@ -30,9 +30,8 @@ class Player(abstract.AbstractPlayer):
         self.time_for_current_move = self.time_remaining_in_round / self.turns_remaining_in_round - 0.05
         if len(possible_moves) == 1:
             return possible_moves[0]
-
         best_move = possible_moves[0]
-        next_state = copy.deepcopy(game_state)
+        next_state = copy.deepcopy(game_state)  # is preformed to leave the original game state unchanged.
         next_state.perform_move(best_move[0],best_move[1])
         # Choosing an arbitrary move
         # Get the best move according the utility function
@@ -52,8 +51,8 @@ class Player(abstract.AbstractPlayer):
 
         return best_move
 
-    def utility(self, state):
-        if len(state.get_possible_moves()) == 0:
+    def utility(self, state):                              # this is a greedy utility function- goes on the step where i'll have the most units.
+        if len(state.get_possible_moves()) == 0:         # todo I didn't get the meaning of this if.
             return INFINITY if state.curr_player != self.color else -INFINITY
 
         my_u = 0
